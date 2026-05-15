@@ -1,4 +1,4 @@
-from dados import clientes
+import dados
 from utils import titulo
 
 
@@ -6,15 +6,14 @@ def cadastrar_cliente():
     titulo("Cadastrar Cliente")
 
     nome = input("Nome do cliente: ")
-    telefone = input("Telefone: ")
+    cpf = input("CPF do cliente: ")
 
     cliente = {
-        "id": len(clientes) + 1,
         "nome": nome,
-        "telefone": telefone
+        "cpf": cpf
     }
 
-    clientes.append(cliente)
+    dados.clientes.append(cliente)
 
     print("Cliente cadastrado com sucesso!")
 
@@ -22,12 +21,11 @@ def cadastrar_cliente():
 def listar_clientes():
     titulo("Lista de Clientes")
 
-    if len(clientes) == 0:
+    if len(dados.clientes) == 0:
         print("Nenhum cliente cadastrado.")
         return
 
-    for cliente in clientes:
-        print(f"ID: {cliente['id']}")
+    for cliente in dados.clientes:
         print(f"Nome: {cliente['nome']}")
-        print(f"Telefone: {cliente['telefone']}")
+        print(f"CPF: {cliente['cpf']}")
         print("-" * 30)
